@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 	<title>Importar datos desde MySQL</title>
 	<script type="text/javascript" src="js/angular.min.js"></script>
+	<link rel="stylesheet" href="css/table.css">
 	
 </head>
 <body>
@@ -23,7 +24,9 @@
 			</tr>
 		</thead>
 		<tr ng-repeat="usuario in equipo">
-			<td>{{usuario.id}}</td><td>{{usuario.usuario}}</td><td>{{usuario.nombre}}</td><td>{{usuario.apellido}}</td><td>{{usuario.telefono}}</td><td>{{usuario.email}}</td><td>{{usuario.estado | cambiar}}</td>
+			<td>{{usuario.id}}</td><td>{{usuario.usuario}}</td><td>{{usuario.nombre}}</td>
+			<td>{{usuario.apellido}}</td><td>{{usuario.telefono}}</td><td>{{usuario.email}}</td>
+			<td>{{usuario.estado | cambiar}}</td>
 		</tr>
 	</table>
  
@@ -33,14 +36,10 @@
 	
 var misDatos = angular.module('datosApp', []);
  
-misDatos.controller('controladorDatos',function($scope,$http){
- 
-		$scope.importar = function(){
- 
-			$http.get('php/listar.php').success(function(datos){
- 
-				$scope.equipo = datos;
- 
+misDatos.controller('controladorDatos',function($scope,$http){ 
+		$scope.importar = function(){ 
+			$http.get('php/listar.php').success(function(datos){ 
+				$scope.equipo = datos; 
 			});
 		}
  
@@ -51,8 +50,7 @@ misDatos.controller('controladorDatos',function($scope,$http){
 misDatos.filter('cambiar',function(){
  
  
-	var cambiarFiltro = function(valor){
- 
+	var cambiarFiltro = function(valor){ 
 		if(valor==1){
 			var nuevosDatos = "Activo";
 		}else{
@@ -60,8 +58,7 @@ misDatos.filter('cambiar',function(){
 		}
  
 		return nuevosDatos;
-	}
- 
+	} 
 	return cambiarFiltro;
 });
 </script>

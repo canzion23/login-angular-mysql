@@ -14,7 +14,7 @@ $DB_USER = 'root';
 /** Tu password de MySQL */ 
 $DB_PASSWORD = '';
 /** El nombre de tu base de datos */ 
-$DB_NAME = 'tienda';
+$DB_NAME = 'prueba';
  
  
 $mysqli = @new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME); 
